@@ -23,5 +23,7 @@ public class Main {
         System.out.println(myArr);
         myArr.addAll(collection);
         System.out.println(myArr);
+        myArr.sort();
+        System.out.println(myArr);
     }
 }
