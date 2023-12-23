@@ -1,0 +1,24 @@
+
+public class Animal implements Participant{
+
+    private String type;
+    private String name;
+    private int maxRunDistance;
+    private int maxJumpDistance;
+    private int maxSwimDistance;
+    private boolean active;       //сошел с дистанции или нет
+    public String getName() {
+        return name;
+    }
+    public boolean isActive() {
+        return active;
+    }
+
+    public Animal(String type, String name, int maxRunDistance, int maxJumpDistance, int maxSwimDistance) {
+        this.type = type;
+        this.name = name;
+        this.maxRunDistance = maxRunDistance;
+        this.maxJumpDistance = maxJumpDistance;
+        this.maxSwimDistance = maxSwimDistance;
+        this.active = true;
+    }
