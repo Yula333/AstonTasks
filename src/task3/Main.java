@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -18,7 +19,7 @@ public class Main {
         List<String> code = Files.readAllLines(pathCode);
 
         searchWithFirstVowels(strings);
-
+        searchRepeatingLetters(strings);
         searchBigNum(strings);
         publicToPrivate(code);
         codeReverse(code);
@@ -41,6 +42,16 @@ public class Main {
                 .mapToInt(String::length)
                 .max().orElse(0);
         System.out.println("Максимальное количество цифр идущих подряд = " + i);
+    }
+
+    public static void searchRepeatingLetters(List<String> strings) {
+        System.out.println("2. Задан файл с текстом, найти и вывести в консоль все слова, для которых последняя буква одного слова " +
+                "совпадает с первой буквой следующего слова.");
+        List<String> s = strings.stream()
+                .flatMap(str -> Arrays.stream(str.split(" ")))
+                .toList();
+        repeatLetters(s);
+
     }
 
     public static void publicToPrivate(List<String> code) throws IOException {
@@ -76,5 +87,15 @@ public class Main {
                 .stream()
                 .map(Object::toString)
                 .collect(Collectors.toList()));
+    }
+
+    public static void repeatLetters(List<String> s) {
+        for (int i = 0; i < s.size() - 1; i++) {
+            if (s.get(i).length() > 1) {
+                if (s.get(i).charAt(s.get(i).length() - 1) == s.get(i + 1).charAt(0)) {
+                    System.out.println(s.get(i) + " - " + s.get(i + 1));
+                }
+            }
+        }
     }
 }
